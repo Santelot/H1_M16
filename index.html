@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M16</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y establecer el enfoque para la misión.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy pondremos a prueba nuestra habilidad para entrenar un chatbot que cree contenido para redes sociales. Vamos a enfocarnos en perfeccionar prompts efectivos para lograr resultados increíbles."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero saber cómo están hoy. Si se sienten con mucha energía, levanten las dos manos. Si están listos pero tranquilos, den dos toques rápidos en la mesa frente a ustedes."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos como símbolo de agradecimiento por tener la oportunidad de aprender y practicar algo nuevo. ¡Gracias por estar aquí, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos clave: 1. Entrenar un chatbot creador de contenido para redes sociales. 2. Probar y analizar su efectividad utilizando priming prompts diseñados por ustedes."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🧘‍♂️ Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Activar mente y cuerpo con un breve ejercicio.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Desafío de Equilibrio".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora vamos a activar nuestro cuerpo y nuestra mente con un desafío sencillo pero efectivo. Pónganse de pie, mantengan el equilibrio sobre una pierna durante 30 segundos y luego cambien a la otra pierna."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 30 segundos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión del Desafío".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Muy bien, Genios! Este ejercicio no solo mejora el equilibrio físico, sino que también nos ayuda a enfocar nuestra atención y preparar nuestra mente para tareas creativas. ¡Estamos listos para el siguiente paso!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Organización en equipos para trabajar colaborativamente.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Continuamos en Equipo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, trabajaremos con los mismos equipos que formaron en la misión anterior. Reúnanse rápidamente con su grupo para continuar avanzando juntos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Tiempo para Organizarse".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recolectar Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Un representante de cada equipo, por favor, pase a recoger las Magic Tablets para que puedan trabajar en su reto. Tómense un minuto para completar esta tarea."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 28 minutos</div>
+        <div class="subtitle">Diseñar y ejecutar una campaña en redes sociales utilizando un chatbot.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 13 "Título del Desafío".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de demostrar sus habilidades. Hoy vamos a diseñar una campaña para promover un festival cultural utilizando un chatbot que crea contenido para redes sociales. Trabajaremos en varias etapas para garantizar que el contenido sea atractivo, preciso y alineado con los objetivos del evento. ¡Es hora de ser creativos y estratégicos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 14 "Etapas del Desafío".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Este desafío consta de siete etapas clave: entender el evento y la audiencia, definir objetivos de campaña, diseñar priming prompts, generar contenido, revisarlo, evaluar el contenido de sus compañeros y finalizar la campaña. Cada etapa está diseñada para ayudarnos a comprender mejor cómo entrenar y utilizar un chatbot para generar contenido que conecte con el público. ¡Prepárense para aprender haciendo!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 15 "Etapa 1: Entender el Evento".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En esta etapa, revisaremos la información del festival cultural. Lean los detalles sobre el tema 'Unidos en la Diversidad', las actividades programadas como presentaciones artísticas y exposiciones, y los objetivos como promover la conciencia cultural. También es importante conocer al público objetivo: estudiantes, padres y la comunidad local. Por último, asegúrense de cumplir con las guías escolares para redes sociales, como el uso de logotipos y tono apropiado."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (3 minutos):</strong> Proyectar Diapositiva 16 "Cronómetro - Etapa 1".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 17 "Etapa 2: Definir Estrategia".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora vamos a establecer los objetivos para nuestra campaña. ¿Qué queremos lograr? Por ejemplo: aumentar la participación en el festival un 50% más que el año pasado o generar interacción en redes sociales. Luego definiremos una estrategia de contenido. Piensen en temas como destacar las culturas representadas, mostrar adelantos de actividades y usar plataformas según las preferencias del público. Por ejemplo, Instagram para contenido visual y Twitter para actualizaciones rápidas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (3 minutos):</strong> Proyectar Diapositiva 18 "Cronómetro - Etapa 2".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 19 "Etapa 3: Crear el Prompt".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Diseñen un priming prompt para guiar al chatbot. Especificaremos su rol, por ejemplo: 'Eres un gerente de redes sociales que promociona un festival cultural.' Definan el tono y estilo: entusiasta, inclusivo y juvenil. Incluyan detalles clave como actividades del festival, hashtags, frases temáticas, y adapten las instrucciones según la plataforma. Utilicen la plantilla proporcionada para asegurarse de cubrir todo. También incluyan ejemplos de publicaciones que reflejen lo que esperan."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (5 minutos):</strong> Proyectar Diapositiva 20 "Cronómetro - Etapa 3".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Etapa 4: Generar Contenido".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora vamos a utilizar su priming prompt para generar publicaciones en redes sociales. Pídanle al chatbot que cree contenido variado para plataformas específicas, como tweets, publicaciones de Instagram y actualizaciones de Facebook. Asegúrense de incluir elementos visuales como emojis, hashtags y llamados a la acción. Por ejemplo: '¡No te pierdas el festival este viernes! 🎶🌍 Usa el hashtag #UnidosEnLaDiversidad para compartir tu experiencia.' Revise que las publicaciones sean atractivas y alineadas con los objetivos de su estrategia."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (5 minutos):</strong> Proyectar Diapositiva 22 "Cronómetro - Etapa 4".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Etapa 5: Revisar Contenido".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Revisen el contenido generado y evalúen su calidad. Pregúntense: ¿Es relevante? ¿Sigue el tono y estilo deseado? ¿Es atractivo para la audiencia? Si encuentran áreas que necesitan ajustes, actualicen su priming prompt para resolverlas. Por ejemplo: 'Incluye siempre la fecha del evento en las publicaciones.' Pueden regenerar el contenido con los cambios necesarios para obtener mejores resultados."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (5 minutos):</strong> Proyectar Diapositiva 24 "Cronómetro - Etapa 5".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Etapa 6: Evaluar a Compañeros".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, intercambien su contenido generado con otro equipo. Revisen sus publicaciones y evaluen aspectos como tono, relevancia y creatividad usando la hoja de evaluación proporcionada. Den retroalimentación constructiva destacando sus fortalezas y sugiriendo mejoras. Por ejemplo: 'El tono es excelente, pero podrían agregar un llamado a la acción más fuerte.' Este intercambio les ayudará a ver diferentes enfoques y aprender de sus compañeros."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (5 minutos):</strong> Proyectar Diapositiva 26 "Cronómetro - Etapa 6".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 15 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Etapa 7: Finalizar Campaña".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Es momento de integrar la retroalimentación recibida y realizar ajustes finales en sus publicaciones. Asegúrense de que el contenido esté alineado con los objetivos del evento y cumpla con las guías escolares. También organicen un calendario de publicación para maximizar el impacto de su campaña. Finalmente, prepárense para compartir sus estrategias y muestras de contenido con la clase."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 16 (5 minutos):</strong> Proyectar Diapositiva 28 "Cronómetro - Etapa 7".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 17 (0.5 minutos):</strong> Proyectar Diapositiva 29 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, al concluir este desafío hemos logrado todos los objetivos: diseñar una campaña de redes sociales usando priming prompts, generar y revisar contenido efectivo, y reflexionar sobre cómo ajustar estrategias para mejorar el impacto. ¡Gran trabajo!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 18 (0.5 minutos):</strong> Proyectar Diapositiva 30 "You’ve Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han demostrado creatividad, estrategia y colaboración para desarrollar una campaña increíble. Su esfuerzo merece ser recompensado. ¡Cada equipo se lleva Mon-e por su gran dedicación!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🙏 Actividad 5: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cierre de la misión y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 31 "Honor de Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos llegado al final de esta misión. Antes de irnos, cada equipo pase al frente y entregue las Magic Tablets. Además, asegúrense de dejar su área de trabajo limpia y ordenada. ¡Gracias por su esfuerzo hoy!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
